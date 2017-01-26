@@ -1,7 +1,7 @@
 # Phoenix Drone Flight Software
-Flight software for the Phoenix Drone project, running on an ATmega328p.
+Raw software infrastructure for an ATmega2560 ATmega328p.
 
-![Phoenix](phoenix.png)
+![Phoenix](nasalogo.png)
 
 ## Setup
 In theory, you can use any operating system to build. However, we are using mainly OS X (10.10 and 10.11) and Ubuntu 14.04. Windows should work with no issues using `cygwin` and `winavr`.
