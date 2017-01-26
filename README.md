@@ -1,4 +1,4 @@
-# Phoenix Drone Flight Software
+# Flight Software
 Raw software infrastructure for an ATmega2560 ATmega328p.
 
 ![Phoenix](nasalogo.png)
