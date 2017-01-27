@@ -25,13 +25,14 @@
 #
 
 # MCU name
-MCU = atmega328p
+MCU = atmega2560
 
 # Programming Interface ('arduino' for Arduino, 'avrispmkII' for the AVRISP mkII, or `usbtiny` for the Sparkfun AVR Pocket Programmer)
-PHOENIX_PROGRAMMER ?= arduino
+PHOENIX_PROGRAMMER ?= wiring -D
 
 # Programmer Serial port (ex: usb, com5, ttyACM0)
-PHOENIX_PORT ?= usb
+PHOENIX_PORT ?= com8
+
 
 # Output format. (can be srec, ihex, binary)
 FORMAT = ihex
@@ -47,8 +48,7 @@ TARGET = phoenix
 SRC_DIR = src
 
 # List C source files here. (C dependencies are automatically generated.)
-# SRC = $(TARGET).c phoenix-i2c.c utilities/usart.c utilities/delay.c i2cmaster/twimaster.c
-SRC = $(SRC_DIR)/$(TARGET).c $(SRC_DIR)/phoenix-i2c.c $(SRC_DIR)/uart/uart.c $(SRC_DIR)/delay/delay.c $(SRC_DIR)/i2cmaster/twimaster.c 
+SRC = $(SRC_DIR)/$(TARGET).c $(SRC_DIR)/uart/uart.c $(SRC_DIR)/delay/delay.c $(SRC_DIR)/i2cmaster/twimaster.c $(SRC_DIR)/phoenix-gyro.c
 
 # List Assembler source files here.
 # Make them always end in a capital .S.  Files ending in a lowercase .s
@@ -62,6 +62,7 @@ ASRC =
 # List any extra directories to look for include files here.
 #     Each directory must be seperated by a space.
 EXTRAINCDIRS = $(SRC_DIR)/delay $(SRC_DIR)/i2cmaster $(SRC_DIR)/uart "C:\Program Files (x86)\Arduino\hardware\tools\avr\avr\include"
+
 
 # Optional compiler flags.
 #  -g:        generate debugging information (for GDB, or for COFF conversion)
@@ -124,7 +125,8 @@ AVRDUDE_PORT = $(PHOENIX_PORT)	   # programmer connected to serial device
 AVRDUDE_WRITE_FLASH = -U flash:w:$(TARGET).hex
 # AVRDUDE_WRITE_EEPROM = -U eeprom:w:$(TARGET).eep
 
-AVRDUDE_FLAGS = -p $(MCU) -P $(AVRDUDE_PORT) -c $(AVRDUDE_PROGRAMMER)
+AVRDUDE_FLAGS = -p $(MCU) -P $(AVRDUDE_PORT) -c $(AVRDUDE_PROGRAMMER) -v
+#AVRDUDE_FLAGS = -p $(MCU)  -c $(AVRDUDE_PROGRAMMER)
 
 # Uncomment the following if you want avrdude's erase cycle counter.
 # Note that this counter needs to be initialized first using -Yn,

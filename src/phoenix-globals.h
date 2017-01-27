@@ -15,5 +15,7 @@
 #define PHOENIX_GLOBALS_H
 
 #define F_CPU 8000000UL     //Clock Speed (Hz): Note that USART is garbled when using 1MHz instead of 8MHz
+#define OK      0
+#define ERROR   1
 
 #endif//PHOENIX_GLOBALS_H
